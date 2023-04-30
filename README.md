@@ -1,6 +1,6 @@
 ## React Native
 
-A project-based journey of me learning React Native. An Awesome library for Awesome projects ahead.
+A project-based journey of me having fun with React Native. An Awesome library for Awesome projects ahead.
 
 ### Day 1:
 - Development environment Setup
