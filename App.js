@@ -1,11 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
+import Header from './components/header';
+import TodoItem from './components/todoItem';
+import AddTodo from './components/addToDo';
 
 export default function App() {
+  const [todos, setTodos] = useState([
+    {text: "Finish up react native tutorial", key: 1},
+    {text: "Laundry", key: 2},
+    {text: "Meet up with friends", key: 3},
+  ])
+
+  const pressHandler = (key) =>{
+    setTodos((prevTodos)=>{
+      return prevTodos.filter(todo => todo.key !== key)
+    })
+  }
+
+  const submitHandler = (text) =>{
+    SafeAreaInsetsContext([
+      {text: text, key: Math.random().toString()},
+      ...todos
+    ])    
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Header/>
+      <View style={styles.content}>
+        <AddTodo submitHandler={submitHandler}/>
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({item})=>(
+              <TodoItem item={item} pressHandler={pressHandler}/>
+            )}          
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -13,8 +46,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
+  content:{
+    padding: 40
+  },
+  list: {
+    marginTop: 20
+  }
 });
