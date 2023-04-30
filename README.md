@@ -20,4 +20,4 @@ A project-based journey of me having fun with React Native. An Awesome library f
 ### Day 3:
 - Adding icons using Expo.
 - Install from @expo/vector-icons. It has ant icons, material and more libraries.
-- 
+- Default display of elemnts is them being stacked on top of each other
