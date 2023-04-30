@@ -10,3 +10,9 @@ A project-based journey of me learning React Native. An Awesome library for Awes
 - Learning native components
 
 ### Day 2:
+- Made a Todo list
+- - How to dismiss a keyboard.
+- - Interacted with ScrollableView, TouchableOpacity Component
+- Learnt the flexbox basics
+- - A flex of 1 allows an element to take up the space available on the screen
+- - When the element's content overflows, the parent container becomes scrollable after specifying a flex of 1
