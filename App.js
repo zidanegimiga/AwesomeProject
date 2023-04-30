@@ -19,7 +19,7 @@ export default function App() {
   }
 
   const submitHandler = (text) =>{
-    SafeAreaInsetsContext([
+    setTodos([
       {text: text, key: Math.random().toString()},
       ...todos
     ])    
