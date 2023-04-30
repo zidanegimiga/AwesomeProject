@@ -1,24 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Button, Alert } from 'react-native';
 
-export default function AddTodo({submitHandler}){
+export default function AddTodo({ submitHandler }) {
     const [text, setText] = useState("")
-    const changeHandler = (val) =>{
+    const changeHandler = (val) => {
         setText(val)
     }
+    const addTodo = (text) => {
+        if(text.length > 0){
+            submitHandler(text);
+            setText("")
+        } else{
+            Alert.alert('Ooops!', 'Empty text not allowed', [
+                {text: 'Understood', onPress: ()=> console.log('Alert closed')}
+            ])
+        }
+    }
 
-    return(
+    return (
         <View>
             <TextInput
-            onChangeText={changeHandler}
+                onChangeText={changeHandler}
                 style={styles.input}
                 placeholder='Enter todo...'
             />
-            <Button 
+            <Button
                 title="Add Item"
                 color="coral"
-                onPress={()=>submitHandler(text)}
+                onPress={() => addTodo(text)}
             />
         </View>
     )
