@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Fla
 import Header from './components/header';
 import TodoItem from './components/todoItem';
 import AddTodo from './components/addToDo';
+import Home from './.expo/screens/home';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -28,35 +29,11 @@ export default function App() {
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem item={item} pressHandler={pressHandler} />
-              )}
-            />
-          </View>
-        </View>
+        <Home/>
       </View>
     </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  },
-  content: {
-    padding: 40,
-    flex: 1
-  },
-  list: {
-    marginTop: 20,
-    backgroundColor: 'yellow',
-    flex: 1
-  }
 });
